@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <script>
+      fetch("https://api.github.com/users/Riya-Maharjan")
+        .then((response) => response.json())
+        .then(function (data) {
+          console.log(data);
+
+          document.getElementById("fullName").textContent = data["name"];
+          document.getElementById("info").textContent = data["bio"];
+          document.getElementById("image").src = data["avatar_url"];
+
+
+          let repoData=data["repos_url"]
+
+        });
+
+      function information() {}
+
+      //repositories
+      fetch("https://api.github.com/users/Riya-Maharjan/repos")
+        .then((response) => response.json())
+        .then(function (data) {
+          console.log(data);
+
+          //document.getElementById("repo-name").textContent = data["full_name"]
+         // document.getElementById("repo-link").href = data["html_url"] 
+        });
+    </script>
+  </head>
+  <body>
+    <section class="top">
+      <nav>
+        <h3>Riya Maharjan</h3>
+        <div class="nav-links" id="navLinks">
+          <ul>
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact me</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="textbox">
+        <!-- github info -->
+        <img id="image" />
+        <h1 id="fullName"></h1>
+        <br />
+        <p id="info"></p>
+
+        <!-- button start -->
+        <div>
+          <button type="button"><span> </span>TAKE A LOOK AT MY WORK</button>
+          <button type="button"><span> </span>CONTACT ME</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- project section -->
+    <section id="project">
+      <h1>My Projects</h1>
+      <p>These are my Projects</p>
+      <div class="row">
+        <div class="col">
+          <h3 >Phone-dialer</h3>
+          <p>
+            <br />
+            <a href="https://github.com/Riya-Maharjan/Phone-dialer">Click here to go to repository</a>
+          </p>
+        </div>
+        <div class="col">
+          <h3 id="repo-name">simplecalc</h3>
+          <p>
+            <br />
+            <a id="repo-link" href="https://github.com/Riya-Maharjan/simplecalc">Click here to go to repository</a>
+          </p>
+        </div>
+       
+      </div>
+    </section>
+
+  </body>
+</html>
